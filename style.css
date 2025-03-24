@@ -282,31 +282,38 @@ section {
 }
 
 .timeline-item {
-  padding: 10px 50px;
+  padding: 20px;
   position: relative;
   background-color: inherit;
-  width: 50%;
+  width: calc(50% - 40px); /* Add spacing between left and right items */
 }
+
 
 .timeline-item::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  right: -10px;
+  top: calc(50% - 10px); /* Center the marker vertically */
   background-color: white;
   border: 3px solid var(--accent);
-  top: 15px;
-  border-radius: 50%;
-  z-index: 1;
 }
 
+.left::after {
+  right: -10px; /* Marker on the right for left items */
+}
+
+.right::after {
+  left: -10px; /* Marker on the left for right items */
+}
+
+
 .left {
-  left: 0;
+  left: 0; /* Align left items */
 }
 
 .right {
-  left: 50%;
+  left: calc(50% + 20px); /* Add spacing for right items */
 }
 
 .left::before {
@@ -529,11 +536,12 @@ footer {
     left: 31px;
   }
 
-  .timeline-item {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-  }
+.timeline-item {
+    width: calc(100% - 40px); /* Add consistent padding */
+    padding-left: calc(40px + var(--spacing));
+    padding-right: calc(40px + var(--spacing));
+}
+
 
   .timeline-item::before {
     left: 60px;
